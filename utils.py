@@ -3,8 +3,6 @@ import random
 import math
 import binascii
 
-# delimiters
-# use smaller delimiters encoding for saving space
 key_del = "<key>"
 no_rounds_del = "<no_rounds>"
 round_del = "<round>"
@@ -43,9 +41,6 @@ decrypted_filename = "decrypted.txt"
 
 
 def str2bin(sstring):
-    """
-    Transform a string (e.g. 'Hello') into a string of bits
-    """
     bs = ''
     for c in sstring:
         bs = bs + bin(ord(c))[2:].zfill(8)
@@ -53,7 +48,6 @@ def str2bin(sstring):
 
 
 def bin2str(bs):
-
     n = int(bs, 2)
     return binascii.unhexlify('%x' % n)
 
@@ -84,7 +78,6 @@ def generate_pre_processing_tables():
     global two_bits_to_dna_base_table
     global dna_base_to_two_bits_table
 
-    # if you want random table
     # random.shuffle(dna_bases)
     two_bits_to_dna_base_table = dict(zip(two_bit_list, dna_bases))
     dna_base_to_two_bits_table = dict(zip(two_bits_to_dna_base_table.values(), two_bits_to_dna_base_table.keys()))
@@ -95,7 +88,6 @@ def generate_mutation_tables():
     global four_bits_to_two_dna_base_table
     global two_dna_base_to_four_bits_table
 
-    # if you want random table
     # random.shuffle(two_dna_bases)
     four_bits_to_two_dna_base_table = dict(zip(four_bit_list, two_dna_bases))
     two_dna_base_to_four_bits_table = dict(
