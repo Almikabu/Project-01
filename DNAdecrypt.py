@@ -6,9 +6,8 @@ from utils import *
 
 
 def encrypt_key(data, key):
-    """
-    Encrypt data with key: data XOR key.
-    """
+    
+    # Encrypt data with XOR key.
 
     # repeat key ONLY if data is longer than key and encrypt
     if len(data) > len(key):
@@ -21,10 +20,9 @@ def encrypt_key(data, key):
 
 
 def reshape(dna_sequence, reshape_info):
-    """
-    Generate chromosome population.
-    an array of chromosomes, chromosome population
-    """
+    
+    # Generate chromosome population.
+    # an array of chromosomes, chromosome population
 
     chromosome_length = int(reshape_info[0])
     chromosomes = []
@@ -42,9 +40,8 @@ def reverse_reshape(population):
 
 
 def rotate_crossover(population, rotate_info):
-    """
-    Rotate every chromosome in population left / right according to probability p.
-    """
+    
+    # Rotate every chromosome in population left / right according to probability p.
 
     new_population = []
 
@@ -71,9 +68,9 @@ def rotate_crossover(population, rotate_info):
 
 
 def single_point_crossover(population, single_point_info):
-    """
-    Combine each two chromosomes in population by using single point crossover.
-    """
+    
+    # Combine each two chromosomes in population by using single point crossover.
+    
     crossover_points = [int(p) for p in single_point_info.split("|") if p != '']
 
     new_population = []
@@ -114,9 +111,9 @@ def crossover(population, crossover_info):
 
 
 def complement(chromosome, point1, point2):
-    """
-    Flip chromosome bits between point1 and point2.
-    """
+    
+    # Flip chromosome bits between point1 and point2.
+    
     new_chromosome = ""
 
     for i in range(len(chromosome)):
@@ -132,9 +129,8 @@ def complement(chromosome, point1, point2):
 
 
 def mutation(population, mutation_info):
-    """
-    Apply mutation operator by using "complement" and "alter_dna_bases"
-    """
+    
+    # Apply mutation operator by using "complement" and "alter_dna_bases"
 
     # extract the alteration table
     alter_dna_table = ast.literal_eval(get_pattern(mutation_table_del, mutation_info[0])[0])
